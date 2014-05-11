@@ -29,4 +29,21 @@ $(function () {
         }
         keyupWait = window.setTimeout(onKeyup, timeout);
     });
+  
+    // Fullscreen
+    var fsbut = $("<button>fs</button>").appendTo("body");
+    fsbut.on("click", function() {
+        /* cross-browser implementation, without keys
+    var
+          el = document.documentElement
+        , rfs =
+               el.requestFullScreen
+            || el.webkitRequestFullScreen
+            || el.mozRequestFullScreen
+    ;
+    rfs.call(el);
+    */
+    document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT)
+        fsbut.hide();
+    });
 });
