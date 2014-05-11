@@ -6,7 +6,7 @@ $(function () {
         timeout = 1000,
         audio,
         audioFile = "sounds/New Mail.wav",
-        botapiUrl = "http://localhost/chatterbot/botapi-js.php";
+        botapiUrl = "http://localhost/instamail/botapi-js.php";
     
     function onKeyup () {
         var text = $mail.val(),
