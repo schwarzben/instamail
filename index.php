@@ -2,6 +2,8 @@
 require 'chatterbotapi.php';
 
 define('DEBUG', false);
+//define('PB_BOTID', 'b0dafd24ee35a477');
+define('PB_BOTID', 'c3a17e0cbe364dd6');
 
 if (false === DEBUG) {
     error_reporting(false);
@@ -18,7 +20,7 @@ $bot1 = $factory->create(ChatterBotType::CLEVERBOT);
 $bot1session = $bot1->createSession();
 */
 
-$bot2 = $factory->create(ChatterBotType::PANDORABOTS, 'b0dafd24ee35a477');
+$bot2 = $factory->create(ChatterBotType::PANDORABOTS, PB_BOTID);
 $bot2session = $bot2->createSession();
 
 /* Original bot-to-bot conversation code
@@ -35,4 +37,9 @@ while (1)
 */
 $s = $_GET['q'];
 $s = $bot2session->think($s);
+
+// add stuff typical for mail replies
+$s .= "\n\n> " . str_replace("\n", "\n> ", wordwrap($_GET['q']));
+$s = nl2br($s);
+
 echo $s;
