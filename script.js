@@ -5,12 +5,13 @@ $(function () {
         keyupWait,
         timeout = 1000,
         audio,
-        audioFile = "sounds/New Mail.wav";
+        audioFile = "sounds/New Mail.wav",
+        botapiUrl = "http://localhost/chatterbot/botapi-js.php";
     
     function onKeyup () {
         var text = $mail.val(),
             jqxhr;
-        jqxhr = $.get('http://localhost/chatterbot/', {q: "" + text})
+        jqxhr = $.get(botapiUrl, {q: "" + text})
             .done(function (data) {
                 $remail.html(data);
                 audio.play();
